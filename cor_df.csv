@@ -1,0 +1,129 @@
+Var1,Var2,Freq
+"S&P
+Sustainable1","S&P
+Sustainable1",1
+MSCI ESG,"S&P
+Sustainable1",0.6286510021137063
+"Iceberg Data
+Labs","S&P
+Sustainable1",0.45843721694895956
+BIA-GBS,"S&P
+Sustainable1",0.5176993477803492
+"Global
+Impact
+Database","S&P
+Sustainable1",0.6468699740099717
+Fair Supply,"S&P
+Sustainable1",0.4511492938784253
+GIST Impact,"S&P
+Sustainable1",0.6596631658629165
+Nature Alpha,"S&P
+Sustainable1",0.2911371242731223
+"S&P
+Sustainable1",MSCI ESG,0.6286510021137063
+MSCI ESG,MSCI ESG,1
+"Iceberg Data
+Labs",MSCI ESG,0.5771996949932163
+BIA-GBS,MSCI ESG,0.5941128594682583
+"Global
+Impact
+Database",MSCI ESG,0.6836872271605412
+Fair Supply,MSCI ESG,0.5883842287210929
+GIST Impact,MSCI ESG,0.8657154125700764
+Nature Alpha,MSCI ESG,0.4773885536935077
+"S&P
+Sustainable1","Iceberg Data
+Labs",0.45843721694895956
+MSCI ESG,"Iceberg Data
+Labs",0.5771996949932163
+"Iceberg Data
+Labs","Iceberg Data
+Labs",1
+BIA-GBS,"Iceberg Data
+Labs",0.6865269303597727
+"Global
+Impact
+Database","Iceberg Data
+Labs",0.6016281557557301
+Fair Supply,"Iceberg Data
+Labs",0.6014648336949172
+GIST Impact,"Iceberg Data
+Labs",0.5375130141924499
+Nature Alpha,"Iceberg Data
+Labs",0.31707631128453256
+"S&P
+Sustainable1",BIA-GBS,0.5176993477803492
+MSCI ESG,BIA-GBS,0.5941128594682583
+"Iceberg Data
+Labs",BIA-GBS,0.6865269303597727
+BIA-GBS,BIA-GBS,1
+"Global
+Impact
+Database",BIA-GBS,0.7714617243335946
+Fair Supply,BIA-GBS,0.7685095856524428
+GIST Impact,BIA-GBS,0.5790856173772226
+Nature Alpha,BIA-GBS,0.39276629114626166
+"S&P
+Sustainable1","Global
+Impact
+Database",0.6468699740099717
+MSCI ESG,"Global
+Impact
+Database",0.6836872271605412
+"Iceberg Data
+Labs","Global
+Impact
+Database",0.6016281557557301
+BIA-GBS,"Global
+Impact
+Database",0.7714617243335946
+"Global
+Impact
+Database","Global
+Impact
+Database",1
+Fair Supply,"Global
+Impact
+Database",0.7820700431097074
+GIST Impact,"Global
+Impact
+Database",0.6240617277403367
+Nature Alpha,"Global
+Impact
+Database",0.26193232877064143
+"S&P
+Sustainable1",Fair Supply,0.4511492938784253
+MSCI ESG,Fair Supply,0.5883842287210929
+"Iceberg Data
+Labs",Fair Supply,0.6014648336949172
+BIA-GBS,Fair Supply,0.7685095856524428
+"Global
+Impact
+Database",Fair Supply,0.7820700431097074
+Fair Supply,Fair Supply,1
+GIST Impact,Fair Supply,0.5313940217260872
+Nature Alpha,Fair Supply,0.3318236034432429
+"S&P
+Sustainable1",GIST Impact,0.6596631658629165
+MSCI ESG,GIST Impact,0.8657154125700764
+"Iceberg Data
+Labs",GIST Impact,0.5375130141924499
+BIA-GBS,GIST Impact,0.5790856173772226
+"Global
+Impact
+Database",GIST Impact,0.6240617277403367
+Fair Supply,GIST Impact,0.5313940217260872
+GIST Impact,GIST Impact,1
+Nature Alpha,GIST Impact,0.4106768377665824
+"S&P
+Sustainable1",Nature Alpha,0.2911371242731223
+MSCI ESG,Nature Alpha,0.4773885536935077
+"Iceberg Data
+Labs",Nature Alpha,0.31707631128453256
+BIA-GBS,Nature Alpha,0.39276629114626166
+"Global
+Impact
+Database",Nature Alpha,0.26193232877064143
+Fair Supply,Nature Alpha,0.3318236034432429
+GIST Impact,Nature Alpha,0.4106768377665824
+Nature Alpha,Nature Alpha,1

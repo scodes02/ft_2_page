@@ -1,0 +1,174 @@
+---
+title: "Analysis of Biodiversity Impact tools"
+format:
+  pdf: 
+    embed-resources: true
+    code-fold: true
+editor: visual
+---
+
+# Set up
+
+## Packages
+
+```{r, message=FALSE}
+library(tidyverse)
+library(readxl)
+```
+
+## Read in data
+
+```{r}
+# Correlation plot data
+cor_df <- read_csv('/Users/samuelhickman/Downloads/2_pager_code/cor_df.csv') 
+
+# Ten highest impact data
+ten_highest_impact <- read_csv('/Users/samuelhickman/Downloads/2_pager_code/ten_highest_impact.csv') 
+```
+## Define labels
+
+```{r}
+label_map <- c(
+  "S&PS1"   = "S&P Sustainable1",
+  "MSCI"    = "MSCI ESG",
+  "IDL"     = "Iceberg Data Labs",
+  "BIA_GBS" = "BIA-GBS",
+  "GID"     = "Global Impact Database",
+  "FS"      = "Fair Supply",
+  "GIST"    = "GIST Impact",
+  "NAlpha"  = "Nature Alpha"
+)
+```
+
+
+## Define colour scheme
+
+```{r}
+# Colours taken from Franklin Templeton butterfly colours - https://www.franklintempletonglobal.com/helloprogress/
+  red_orange   = "#E04860"
+  purple       = "#8177D8"
+  orange       = "#EC6236"
+  blue         = "#4368F7"
+  dar_blue =     "#081D5E"
+  light_grey   = "#C1BFC2"
+```
+
+# Correlation plots
+
+Spearman Rank Correlation is utilized to look at the correlation between the ranks of companies according to each tool. Higher correlation = more similar rankings of the S&P500.
+
+```{r}
+# Heatmap plot with custom FT color palette
+heatmap <- ggplot(cor_df, aes(Var1, Var2, fill = Freq)) +
+  geom_tile(color = "white") +
+  geom_text(aes(label = round(Freq, 2)), size = 3) +
+  scale_fill_gradient2(
+    low = "#E04860", 
+    mid = "#C1BFC2", 
+    high ="#4368F7", 
+    midpoint = 0
+  ) +
+  theme_minimal() +
+  labs(fill = "Correlation") +
+  theme(
+    axis.title = element_blank(),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+heatmap
+```
+
+# Top ten bottom ten analysis
+
+```{r}
+color_map <- c(
+  "1" = "#C1BFC2",  # light grey
+  "2" = "#AEC8FA",  # pale blue
+  "3" = "#7096F4",  # medium blue
+  "4" = "#4E82F5",  # strong blue
+  "5" = "#4368F7"   # deep blue
+)
+
+tool_cols <- setdiff(names(ten_highest_impact), "worst_rank_order")
+
+plot_data <- ten_highest_impact  |> 
+  rename_with(
+    ~ str_wrap(label_map[.x], width = 12),
+    .cols = all_of(tool_cols)
+  ) |> 
+  pivot_longer(
+    cols      = -worst_rank_order,
+    names_to  = "Tool",
+    values_to = "Ticker"
+  ) |>
+  drop_na(Ticker) |>
+  group_by(Ticker) |>
+  mutate(freq = n()) |>
+  ungroup() |>
+  mutate(freq = factor(freq))
+
+# Plot
+ten_highest_impact <- plot_data |> 
+  ggplot(aes(x = Tool,
+             y = factor(worst_rank_order, levels = rev(unique(worst_rank_order))),
+             fill = freq)) +
+  geom_tile(color = "white") +
+  geom_text(aes(label = Ticker), color = "black", size = 3, fontface = "bold") +
+  scale_fill_manual(
+    values = color_map,
+    name   = "Frequency\nof Occurrence"  
+  ) +
+  labs(
+    y = "Impact Rank (1 = Highest Impact)",
+    x = "Tool"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    panel.grid = element_blank()
+  )
+
+ten_highest_impact
+```
+
+# Saving plots for FR
+
+```{r}
+# Figure 1: Correlation box plot
+ggsave(
+  filename = "FT_2P/figure_1.pdf",
+  plot     = heatmap,
+  width    = 8,
+  height   = 5,
+  units    = "in",
+  dpi      = 450,
+  bg       = "white"
+)
+
+ggsave(
+  filename = "FT_2P/figure_1.eps",
+  plot     = heatmap,
+  width    = 8,
+  height   = 5,
+  units    = "in",
+  device   = "eps"
+)
+
+# Figure 2: Top ten analysis heatmap
+ggsave(
+  filename = "FT_2P/figure_2.pdf",
+  plot     = ten_highest_impact,
+  width    = 10,
+  height   = 5,
+  units    = "in",
+  dpi      = 450,
+  bg       = "white"
+)
+
+ggsave(
+  filename = "FT_2P/figure_2.eps",
+  plot     = ten_highest_impact,
+  width    = 10,
+  height   = 5,
+  units    = "in",
+  bg       = "white")
+```
